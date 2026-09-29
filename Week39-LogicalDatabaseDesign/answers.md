@@ -90,3 +90,8 @@ PostgreSQL converts unquoted identifiers to lowercase. Using snake_case, such as
 
 SET NULL changes the foreign key value to NULL when the referenced parent row is deleted. It is useful when the child row should remain in the database but should no longer be connected to the deleted parent. The foreign key column must allow NULL values.
 All foreign keys use ON UPDATE CASCADE because if a referenced primary key changes, the related foreign key values are updated automatically.
+## Exercise 3: Hotel Booking System
+
+### Why is Room a weak entity?
+
+Room is a weak entity because a room belongs to a hotel. The room number alone cannot identify a room because different hotels can have the same room number. Therefore, the primary key uses both hotel_id and room_number.
