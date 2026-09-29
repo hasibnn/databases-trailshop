@@ -95,3 +95,94 @@ All foreign keys use ON UPDATE CASCADE because if a referenced primary key chang
 ### Why is Room a weak entity?
 
 Room is a weak entity because a room belongs to a hotel. The room number alone cannot identify a room because different hotels can have the same room number. Therefore, the primary key uses both hotel_id and room_number.
+## Exercise 4: Data Type Selection
+
+### 1. Employee salary
+
+**Data Type:** NUMERIC(8,2)
+
+**Explanation:** Salary is money, so NUMERIC is good because it stores exact numbers. The 2 means we can have two numbers after the decimal point.
+
+### 2. Number of items in stock
+
+**Data Type:** INTEGER
+
+**Explanation:** Stock is counted in whole numbers. We cannot have 5.5 products.
+
+### 3. Email verified
+
+**Data Type:** BOOLEAN
+
+**Explanation:** This only needs two answers: true or false. BOOLEAN is used for this.
+
+### 4. Customer date of birth
+
+**Data Type:** DATE
+
+**Explanation:** We only need the customer's birth date. We do not need the exact time.
+
+### 5. Product description
+
+**Data Type:** TEXT
+
+**Explanation:** A product description can be short or very long. TEXT is suitable for this.
+
+### 6. Country code
+
+**Data Type:** CHAR(2)
+
+**Explanation:** A country code always has two letters, such as FI or US. CHAR(2) is suitable for a fixed two-letter code.
+
+### 7. IP address
+
+**Data Type:** INET
+
+**Explanation:** PostgreSQL has the INET type for IP addresses. It is better than storing an IP address as normal text.
+
+### 8. Order total
+
+**Data Type:** NUMERIC(10,2)
+
+**Explanation:** An order total is money, so we need an exact number. NUMERIC avoids problems with rounding.
+
+### 9. GPS latitude
+
+**Data Type:** DOUBLE PRECISION
+
+**Explanation:** Latitude can have many decimal places. DOUBLE PRECISION is suitable for storing this type of number.
+
+### 10. API token ID
+
+**Data Type:** UUID
+
+**Explanation:** UUID is used for unique IDs. It is useful when the ID needs to be unique across different systems.
+
+### 11. Video duration
+
+**Data Type:** INTEGER
+
+**Explanation:** The duration is measured in seconds. Seconds are whole numbers, so INTEGER is suitable.
+
+### 12. Last modified timestamp
+
+**Data Type:** TIMESTAMPTZ
+
+**Explanation:** We need both the date and time. TIMESTAMPTZ also handles timezone information.
+
+### 13. Finnish phone number
+
+**Data Type:** VARCHAR(20)
+
+**Explanation:** A phone number can contain numbers, spaces and the plus sign. VARCHAR is suitable because it should be stored as text, not as a number.
+
+### 14. Percentage discount
+
+**Data Type:** NUMERIC(5,2)
+
+**Explanation:** A discount can contain decimal numbers, such as 10.50%. NUMERIC stores the value accurately.
+
+### 15. Product color options
+
+**Data Type:** TEXT
+
+**Explanation:** Color names are words, such as red, blue or green. TEXT can store these values easily.
