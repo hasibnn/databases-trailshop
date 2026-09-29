@@ -324,11 +324,11 @@ CREATE TABLE borrowings (
     borrowing_id SERIAL PRIMARY KEY,
     member_number INTEGER NOT NULL REFERENCES members(member_number),
     barcode VARCHAR(50) NOT NULL REFERENCES copies(barcode),
-CREATE UNIQUE INDEX one_active_borrowing_per_copy
-ON borrowings(barcode)
-WHERE return_date IS NULL;
     borrow_date DATE NOT NULL,
     due_date DATE NOT NULL,
     return_date DATE,
     CHECK (due_date = borrow_date + INTERVAL '14 days')
 );
+CREATE UNIQUE INDEX one_active_borrowing_per_copy
+ON borrowings(barcode)
+WHERE return_date IS NULL;
