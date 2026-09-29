@@ -186,3 +186,122 @@ Room is a weak entity because a room belongs to a hotel. The room number alone c
 **Data Type:** TEXT
 
 **Explanation:** Color names are words, such as red, blue or green. TEXT can store these values easily.
+## Exercise 5: Constraint Design
+
+### Part A: Single-Column Constraints
+
+### 1. Product weight
+
+```sql
+weight NUMERIC(6,2) CHECK (weight > 0)
+## Exercise 5: Constraint Design
+
+### Part A: Single-Column Constraints
+
+### 1. Product weight
+
+```sql
+weight NUMERIC(6,2) CHECK (weight > 0)
+```
+
+This means the weight must be greater than zero if a value is provided.
+
+### 2. Customer email
+
+```sql
+email VARCHAR(254) NOT NULL
+```
+
+This means every customer must provide an email address.
+
+### 3. Unique product name
+
+```sql
+product_name VARCHAR(100) UNIQUE
+```
+
+This means two products cannot have the same name.
+
+### 4. Employee hire date
+
+```sql
+hire_date DATE DEFAULT CURRENT_DATE
+```
+
+This means today's date is used automatically if no hire date is given.
+
+### 5. Order status
+
+```sql
+status VARCHAR(20) CHECK (status IN ('new', 'confirmed', 'shipped', 'delivered', 'returned'))
+```
+
+This means only the listed order statuses can be used.
+
+### Part B: Multi-Column Constraints
+
+### 6. Flight arrival after departure
+
+```sql
+CHECK (arrival_time > departure_time)
+```
+
+This means the arrival time must be later than the departure time.
+
+### 7. Student and course must be unique
+
+```sql
+UNIQUE (student_id, course_id)
+```
+
+This means the same student cannot be enrolled in the same course more than once.
+
+### 8. Discount percentage
+
+```sql
+CHECK (discount_percentage BETWEEN 0 AND 100)
+```
+
+This means the discount must be between 0 and 100 percent.
+
+### Part C: Foreign Key Constraints
+
+### 9. Department delete sets employee department to NULL
+
+```sql
+department_id INTEGER
+    REFERENCES departments(department_id)
+    ON DELETE SET NULL
+```
+
+This means if a department is deleted, the employee's department_id becomes NULL.
+
+### 10. Customer delete is prevented if orders exist
+
+```sql
+FOREIGN KEY (customer_id)
+    REFERENCES customers(customer_id)
+    ON DELETE RESTRICT
+```
+
+This means a customer cannot be deleted if there are orders connected to that customer.
+
+### 11. Author delete cascades to blog posts
+
+```sql
+FOREIGN KEY (author_id)
+    REFERENCES authors(author_id)
+    ON DELETE CASCADE
+```
+
+This means deleting an author also deletes the blog posts connected to that author.
+
+### 12. Course delete cascades to enrollments
+
+```sql
+FOREIGN KEY (course_id)
+    REFERENCES courses(course_id)
+    ON DELETE CASCADE
+```
+
+This means deleting a course also deletes the enrollments connected to that course.
